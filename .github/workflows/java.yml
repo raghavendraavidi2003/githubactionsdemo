@@ -1,1 +1,28 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'   # You can change to 11 or 21 if needed
+          distribution: 'temurin'
+
+      - name: Compile HelloWorld.java
+        run: javac HelloWorld.java
+
+      - name: Run HelloWorld
+        run: java HelloWorld
 
